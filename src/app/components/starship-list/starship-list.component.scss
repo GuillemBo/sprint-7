@@ -1,3 +1,8 @@
 .card {
   background: rgb(41, 41, 41);
 }
+
+.card:hover {
+  background-color: rgb(94, 94, 94);
+  cursor: pointer;
+}

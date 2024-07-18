@@ -2,12 +2,14 @@
   <div class="row">
     @for (starship of starships; track $index) {
 
-      <div class="card shadow mt-3">
-        <div class="col text-light">
-          <h5 class="fw-semibold">{{this.starships[$index].name}}</h5>
-          <p>{{this.starships[$index].model}}</p>
+      <div class="card shadow mt-3" (click)="getStarshipName(starship)">
+        <div class="card-body text-light">
+          <h5 class="fw-semibold">{{ starship.name }}</h5>
+          <p>{{ starship.model }}</p>
         </div>
       </div>
     }
   </div>
 </div>
+
+

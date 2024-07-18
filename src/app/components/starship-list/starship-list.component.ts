@@ -1,8 +1,8 @@
-import { AnimateTimings } from '@angular/animations';
+
 import { StarshipService } from './../../services/starship.service';
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, Output, output } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-starship-list',
@@ -15,7 +15,7 @@ export class StarshipListComponent {
 
   starships: any[] = [];
 
-  constructor(private StarshipService: StarshipService) {}
+  constructor(private StarshipService: StarshipService, private router: Router) {}
 
   ngOnInit(): void {
 
@@ -33,5 +33,10 @@ export class StarshipListComponent {
     });
   }
 
-
+  getStarshipName(starship: any) {
+    this.StarshipService.setSelectedStarship(starship);
+    this.StarshipService.navigateToDetails();
+    console.log(starship)
+  }
+  
 }
