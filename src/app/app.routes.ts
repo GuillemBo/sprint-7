@@ -6,5 +6,6 @@ import { StarshipListComponent } from './components/starship-list/starship-list.
 export const routes: Routes = [
   { path: '', redirectTo: '/starships', pathMatch: 'full' },
   { path: '', component: StarshipListComponent },
-  { path: 'details', component: StarshipDetailsComponent }
+  { path: 'details', component: StarshipDetailsComponent },
+  { path: '**', redirectTo: '' }
 ];

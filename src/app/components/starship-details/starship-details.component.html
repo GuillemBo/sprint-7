@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  @if (selectedStarship) {
+    <div class="row border">
+      <p class="text-light">Starhsip</p>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+
+      <div class="col-6">
+        <img [src]="selectedStarship.image" alt="{{ selectedStarship.name }}" class="card-img-top" (error)="handleImageError($event)" [attr.alt]="selectedStarship.name">
+      </div>
+      <div class="col-6">
+
+        <div class="card rounded shadow mt-3 d-flex">
+          <div class="card-body text-light">
+              <h5 class="fw-semibold">{{ selectedStarship.name }}</h5>
+              <p>Model: {{ selectedStarship.model }}</p>
+              <p>Manufacturer: {{ selectedStarship.manufacturer }}</p>
+              <p>Cost: {{ selectedStarship.cost_in_credits }} credits</p>
+              <p>Length: {{ selectedStarship.length }} meters</p>
+              <p>Crew: {{ selectedStarship.crew }}</p>
+              <p>Passengers: {{ selectedStarship.passengers }}</p>
+              <p>Max Atmosphering Speed: {{ selectedStarship.max_atmosphering_speed }}</p>
+              <p>Hyperdrive Rating: {{ selectedStarship.hyperdrive_rating }}</p>
+              <p>MGLT: {{ selectedStarship.MGLT }}</p>
+              <p>Starship Class: {{ selectedStarship.starship_class }}</p>
+              <button (click)="goBack()" class="btn btn-secondary d-flex align-items-end shadow">Back to List</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+</div>

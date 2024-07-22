@@ -1,6 +1,6 @@
 
 import { StarshipService } from './../../services/starship.service';
-import { Component, Output, output } from '@angular/core';
+import { Component, HostListener, Output, output } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -14,18 +14,33 @@ import { Router } from '@angular/router';
 export class StarshipListComponent {
 
   starships: any[] = [];
+  currentPage: number = 1;
+  loading: boolean = false;
 
-  constructor(private StarshipService: StarshipService, private router: Router) {}
+  constructor(private StarshipService: StarshipService) {}
 
   ngOnInit(): void {
+    this.loadStarships();
+  }
 
-    this.StarshipService.getStarShips().subscribe({
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight && !this.loading) {
+      this.loadStarships();
+    }
+  }
+
+  loadStarships(): void {
+    this.loading = true;
+    this.StarshipService.getStarShips(this.currentPage).subscribe({
       next: (data) => {
-        this.starships = data.results;
-        console.log(this.starships);
+        this.starships = [...this.starships, ...data];
+        this.currentPage++;
+        this.loading = false;
       },
       error: (error) => {
         console.error('There was an error!', error);
+        this.loading = false;
       },
       complete: () => {
         console.log('Request completed');
@@ -34,9 +49,7 @@ export class StarshipListComponent {
   }
 
   getStarshipName(starship: any) {
-    this.StarshipService.setSelectedStarship(starship);
-    this.StarshipService.navigateToDetails();
-    console.log(starship)
+    this.StarshipService.navigateToDetails(starship);
   }
-  
+
 }

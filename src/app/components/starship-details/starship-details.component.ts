@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { StarshipService } from './../../services/starship.service';
 import { Component, Input, input } from '@angular/core';
 import { Starship } from '../../interfaces/starship';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-starship-details',
@@ -12,14 +13,24 @@ import { Starship } from '../../interfaces/starship';
 })
 export class StarshipDetailsComponent {
 
+  ImgStarhsips: any[] = [];
+
   selectedStarship: any
-  constructor(private StarshipService: StarshipService) {}
+  constructor(private StarshipService: StarshipService, private router: Router) {}
 
   ngOnInit(): void {
-
+    this.selectedStarship = this.StarshipService.getSelectedStarship();
+    if (!this.selectedStarship) {
+      this.router.navigate(['']);
+    }
   }
 
-  onClick() {
-    this.selectedStarship = this.StarshipService.getSelectedStarship()
+  goBack() {
+    this.router.navigate(['']);
+  }
+
+  handleImageError(event: Event) {
+    const target = event.target as HTMLImageElement;
+    target.src = this.StarshipService.getDefaultImageUrl();
   }
 }
