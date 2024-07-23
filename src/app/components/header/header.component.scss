@@ -40,3 +40,20 @@
   color: white;
   text-decoration: none;
 }
+
+.nav-link {
+  color: rgb(185, 185, 185);
+}
+
+.nav-link:hover {
+  color: white;
+  border-block-end-color: blue;
+}
+
+.custom-hr {
+  border: none;
+  border-top: 1px solid #ffffff; /* Cambia el grosor y el color aquí */
+  margin: 0;
+}
+
+
