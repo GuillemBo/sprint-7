@@ -10,10 +10,15 @@
       <div class="col d-flex justify-content-center mt-4 align-items-center">
         <img src="assets/starwarslogo.png" alt="Star Wars Logo" class="logo">
       </div>
-        <div class="col auth-links justify-content-end align-items-center">
-          <a href="#">LOG IN</a>
-          <span>/</span>
-          <a href="#">SIGN UP</a>
+      <div class="col auth-links justify-content-end align-items-center">
+          @if (AuthService.isAuthenticated()) {
+            <a (click)="logout()" href="/login" class="mx-5">LOGOUT</a>
+          } @else {
+
+            <a href="/login">LOG IN</a>
+            <span>/</span>
+            <a href="/register">SIGN UP</a>
+          }
         </div>
     </div>
   </div>
@@ -30,7 +35,7 @@
               <a href="/home" class="nav-link">HOME</a>
             </li>
           <li>
-            <a href="#" class="nav-link">STARSHIPS</a>
+            <a href="/starships" class="nav-link">STARSHIPS</a>
           </li>
         </ul>
       </div>

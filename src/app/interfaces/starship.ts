@@ -62,3 +62,7 @@ export interface Film {
   edited: string;
   url: string;
 }
+
+export interface AuthResponse {
+  accessToken: string;
+}

@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="container">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" class="form-control" type="email">
+      @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+        <div class="text-danger">
+          Please enter a valid email.
+        </div>
+      }
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" class="form-control" type="password">
+      @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+
+        <div class="text-danger">
+          Password must be at least 6 characters long.
+        </div>
+      }
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+  </form>
+</div>
+

@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { StarshipListComponent } from "./components/starship-list/starship-list.component";
@@ -13,4 +14,5 @@ import { StarshipDetailsComponent } from "./components/starship-details/starship
 })
 export class AppComponent {
   title = 'sprint-7';
+
 }
