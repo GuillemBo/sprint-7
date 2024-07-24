@@ -1,26 +1,36 @@
-<div class="container">
-  <h2>Login</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input id="email" formControlName="email" class="form-control" type="email">
-      @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
-        <div class="text-danger">
-          Please enter a valid email.
-        </div>
-      }
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input id="password" formControlName="password" class="form-control" type="password">
-      @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+<div class="container d-flex justify-content-center">
 
-        <div class="text-danger">
-          Password must be at least 6 characters long.
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="row custom-width">
+    <div class="card mb-3 p-4 shadow rounded-4 mt-5">
+
+
+      <h3 class="text-center-md-4">Login</h3>
+
+      <div class="row g-2 mt-2 p-3">
+        <div class="col-12">
+          <label for="password">E-mail</label>
+          <input id="email" formControlName="email" class="form-control" type="email">
+          @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+          <div class="text-danger">
+            Please enter a valid email.
+          </div>
+          }
         </div>
-      }
+        <div class="col-12">
+          <label for="password">Password</label>
+          <input id="password" formControlName="password" class="form-control" type="password">
+          @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+
+          <div class="text-danger">
+            Password must be at least 6 characters long.
+          </div>
+          }
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary w-50 rounded-pill" [disabled]="loginForm.invalid">Login</button>
+        </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+
   </form>
 </div>
-

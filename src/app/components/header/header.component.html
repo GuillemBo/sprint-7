@@ -12,14 +12,15 @@
       </div>
       <div class="col auth-links justify-content-end align-items-center">
           @if (AuthService.isAuthenticated()) {
-            <a (click)="logout()" href="/login" class="mx-5">LOGOUT</a>
+            <p href="" class="text-warning">Wellcome! {{ username }}</p>
+            <p (click)="logout()" href="/login" class="mx-5 logout-btn">LOGOUT</p>
           } @else {
 
             <a href="/login">LOG IN</a>
             <span>/</span>
             <a href="/register">SIGN UP</a>
           }
-        </div>
+      </div>
     </div>
   </div>
 </nav>

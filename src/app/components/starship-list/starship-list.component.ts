@@ -44,6 +44,7 @@ export class StarshipListComponent {
       },
       complete: () => {
         console.log('Request completed');
+        console.log(this.starships)
       }
     });
   }

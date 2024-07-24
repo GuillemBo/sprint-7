@@ -65,4 +65,8 @@ export interface Film {
 
 export interface AuthResponse {
   accessToken: string;
+  user: {
+    email: string;
+    username: string;
+  };
 }

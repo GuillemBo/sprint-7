@@ -1,7 +1,8 @@
+import { AuthService } from './../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthResponse } from '../../interfaces/starship';
 
 @Component({
@@ -14,10 +15,12 @@ import { AuthResponse } from '../../interfaces/starship';
 export class LoginComponent {
   loginForm: FormGroup = this.fb.group({
   });
+  returnUrl: string = '';
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
+    private AuthService: AuthService,
+    private route: ActivatedRoute,
     private router: Router
   ) { }
 
@@ -26,19 +29,24 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+
+    // Obtén la URL de retorno de los parámetros de consulta o establece una URL predeterminada
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      this.http.post<AuthResponse>('http://localhost:3000/login', this.loginForm.value)
-        .subscribe(response => {
-          // Guarda el token i redirigeix l'usuari
-          localStorage.setItem('token', response.accessToken);
-          this.router.navigate(['/']);
-        }, error => {
+      const { email, password } = this.loginForm.value;
+      this.AuthService.login(email, password).subscribe(
+        () => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
           console.error('Error during login:', error);
-        });
+        }
+      );
     }
   }
+
 }

@@ -1,5 +1,5 @@
+import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +10,20 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent {
 
+  username: string | null = null;
+
   constructor(public AuthService: AuthService) {}
+
+
+  ngOnInit(): void {
+    this.AuthService.currentUsername.subscribe(username => {
+      this.username = username;
+    });
+
+  }
 
   logout(): void {
     this.AuthService.logout();
   }
+
 }

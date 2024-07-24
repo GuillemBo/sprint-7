@@ -3,11 +3,12 @@ import { StarshipService } from './../../services/starship.service';
 import { Component, Input, input } from '@angular/core';
 import { Starship } from '../../interfaces/starship';
 import { Router } from '@angular/router';
+import { PilotsComponent } from "../pilots/pilots.component";
 
 @Component({
   selector: 'app-starship-details',
   standalone: true,
-  imports: [],
+  imports: [PilotsComponent],
   templateUrl: './starship-details.component.html',
   styleUrl: './starship-details.component.scss'
 })
@@ -26,7 +27,7 @@ export class StarshipDetailsComponent {
   }
 
   goBack() {
-    this.router.navigate(['']);
+    this.router.navigate(['/starships']);
   }
 
   handleImageError(event: Event) {
