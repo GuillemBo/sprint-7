@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Starship } from '../interfaces/starship';
 
@@ -49,8 +49,16 @@ export class StarshipService {
     return this.defaultImageUrl;
   }
 
-  getPilots() {
-    return this.selectedStarship?.pilots
+  getPilots(): Observable<any[]> {
+    if (!this.selectedStarship || !this.selectedStarship.pilots.length) {
+      return new Observable<any[]>(observer => {
+        observer.next([]);
+        observer.complete();
+      });
+    }
+
+    const pilotRequests = this.selectedStarship.pilots.map(url => this.http.get(url));
+    return forkJoin(pilotRequests);
   }
 
 }

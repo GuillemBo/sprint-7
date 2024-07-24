@@ -16,6 +16,8 @@ export class StarshipDetailsComponent {
 
   ImgStarhsips: any[] = [];
 
+  pilots: any[] = [];
+
   selectedStarship: any
   constructor(private StarshipService: StarshipService, private router: Router) {}
 
@@ -23,7 +25,23 @@ export class StarshipDetailsComponent {
     this.selectedStarship = this.StarshipService.getSelectedStarship();
     if (!this.selectedStarship) {
       this.router.navigate(['']);
+    } else {
+      this.loadPilots();
     }
+  }
+
+  loadPilots(): void {
+    this.StarshipService.getPilots().subscribe({
+      next: (pilots) => {
+        this.pilots = pilots;
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+      complete: () => {
+        console.log('Pilots loaded');
+      }
+    });
   }
 
   goBack() {

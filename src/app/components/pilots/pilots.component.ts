@@ -1,7 +1,5 @@
-import { StarshipService } from './../../services/starship.service';
-import { AuthService } from './../../services/auth.service';
-import { AuthGuard } from './../../guard/auth.guard';
-import { Component } from '@angular/core';
+
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-pilots',
@@ -12,13 +10,8 @@ import { Component } from '@angular/core';
 })
 export class PilotsComponent {
 
-  starshipPilots: any
+  @Input() pilots: any[] = [];
 
-  constructor(private StarshipService: StarshipService) {}
-
-  ngOnInit(){
-    this.starshipPilots = this.StarshipService.getPilots()
-    console.log(this.starshipPilots)
-  }
+  constructor() {}
 
 }
