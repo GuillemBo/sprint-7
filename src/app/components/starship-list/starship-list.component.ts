@@ -1,7 +1,6 @@
 
 import { StarshipService } from './../../services/starship.service';
-import { Component, HostListener, Output, output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, HostListener,} from '@angular/core';
 
 
 @Component({

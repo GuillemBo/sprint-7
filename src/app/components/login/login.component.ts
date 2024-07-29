@@ -34,7 +34,7 @@ export class LoginComponent {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-
+  errorMessage: string = ''
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
@@ -44,6 +44,7 @@ export class LoginComponent {
         },
         error => {
           console.error('Error during login:', error);
+          this.errorMessage = error
         }
       );
     }

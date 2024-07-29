@@ -2,24 +2,36 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <img src="assets/socials/facebook-0555f4e591a5.svg" alt="">
-        <img src="assets/socials/instagram-777ba125c2e7.svg" alt="">
-        <img src="assets/socials/youtube-a3728986e4b2.svg" alt="">
-        <img src="assets/socials/twitter.svg" alt="">
+        <a class="social-link" href="https://www.facebook.com/StarWars" target="_blank" rel="noopener noreferrer"
+          title="TikTok">
+          <img src="assets/socials/facebook-0555f4e591a5.svg" alt="">
+        </a>
+        <a class="social-link" href="https://www.instagram.com/starwars/" target="_blank" rel="noopener noreferrer"
+          title="Instagram">
+          <img src="assets/socials/instagram-777ba125c2e7.svg" alt="">
+        </a>
+        <a class="social-link" href="https://www.youtube.com/user/starwars" target="_blank" rel="noopener noreferrer"
+          title="Twitter">
+          <img src="assets/socials/youtube-a3728986e4b2.svg" alt="">
+        </a>
+        <a class="social-link" href="https://twitter.com/starwars" target="_blank" rel="noopener noreferrer"
+          title="Facebook">
+          <img src="assets/socials/twitter.svg" alt="">
+        </a>
       </div>
       <div class="col d-flex justify-content-center mt-4 align-items-center">
         <img src="assets/starwarslogo.png" alt="Star Wars Logo" class="logo">
       </div>
-      <div class="col auth-links justify-content-end align-items-center">
-          @if (AuthService.isAuthenticated()) {
-            <p href="" class="text-warning">Wellcome! {{ username }}</p>
-            <p (click)="logout()" href="/login" class="mx-5 logout-btn">LOGOUT</p>
-          } @else {
+      <div class="col auth-links justify-content-end align-items-center mx-4">
+        @if (AuthService.isAuthenticated()) {
+        <p href="" class="text-warning">Wellcome! {{ username }}</p>
+        <p (click)="logout()" href="/login" class="mx-5 logout-btn">LOGOUT</p>
+        } @else {
 
-            <a href="/login">LOG IN</a>
-            <span>/</span>
-            <a href="/register">SIGN UP</a>
-          }
+        <a class="login-btn" href="/login">LOG IN</a>
+        <span>/</span>
+        <a class="register-btn" href="/register">SIGN UP</a>
+        }
       </div>
     </div>
   </div>
@@ -31,10 +43,10 @@
   <div class="container-fluid d-flex  justify-content-center">
     <div class="row">
       <div class="col">
-        <ul class="nav nav-underline">
+        <ul class="nav nav-underline gap-4">
           <li>
-              <a href="/home" class="nav-link">HOME</a>
-            </li>
+            <a href="/home" class="nav-link">HOME</a>
+          </li>
           <li>
             <a href="/starships" class="nav-link">STARSHIPS</a>
           </li>

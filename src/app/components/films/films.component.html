@@ -1,0 +1,24 @@
+@if (films.length) {
+  <div class="mx-5">
+    <hr class="custom-hr mt-5">
+    <p class="text-light mx-2 custom-font">FILMS</p>
+    <hr class="custom-hr">
+  </div>
+
+  <div class="d-flex justify-content-start gap-4 mx-5">
+    @for (film of films; track $index) {
+      <div class="mt-5 d-flex justify-content-around">
+        <div class="card custom-card mb-5">
+          <img class="img-fluid" [src]="'https://starwars-visualguide.com/assets/img/films/' + film.url.split('/')[5] + '.jpg'"
+          (error)="handleImageError($event)">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{film.title}}</h5>
+                <p class="card-subtitle">Episode: {{film.episode_id}}</p>
+            </div>
+        </div>
+      </div>
+
+    }
+  </div>
+}
+

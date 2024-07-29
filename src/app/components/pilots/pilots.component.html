@@ -1,16 +1,23 @@
 @if (pilots.length) {
+  <div class="mx-5">
+    <hr class="custom-hr mt-5">
+    <p class="text-light mx-2 custom-font">PILOTS</p>
+    <hr class="custom-hr">
+  </div>
 
-  <div>
+  <div class="d-flex justify-content-start gap-4 mx-5">
     @for (pilot of pilots; track $index) {
-      <div class="card">
-        <div class="card-body">
-          <img [src]="'https://starwars-visualguide.com/assets/img/characters/' + pilot.url.split('/')[5] + '.jpg'"
+      <div class="mt-5 d-flex justify-content-around">
+        <div class="card custom-card">
+          <img class="img-fluid" [src]="'https://starwars-visualguide.com/assets/img/characters/' + pilot.url.split('/')[5] + '.jpg'"
           (error)="handleImageError($event)">
-          <p>{{pilot.name}}</p>
-
+            <div class="card-body text-center">
+                <h5 class="card-title">{{pilot.name}}</h5>
+            </div>
         </div>
       </div>
 
     }
   </div>
 }
+

@@ -4,11 +4,12 @@ import { Component, Input, input } from '@angular/core';
 import { Starship } from '../../interfaces/starship';
 import { Router } from '@angular/router';
 import { PilotsComponent } from "../pilots/pilots.component";
+import { FilmsComponent } from "../films/films.component";
 
 @Component({
   selector: 'app-starship-details',
   standalone: true,
-  imports: [PilotsComponent],
+  imports: [PilotsComponent, FilmsComponent],
   templateUrl: './starship-details.component.html',
   styleUrl: './starship-details.component.scss'
 })
@@ -17,6 +18,8 @@ export class StarshipDetailsComponent {
   ImgStarhsips: any[] = [];
 
   pilots: any[] = [];
+
+  films: any[] = [];
 
   selectedStarship: any
   constructor(private StarshipService: StarshipService, private router: Router) {}
@@ -27,6 +30,7 @@ export class StarshipDetailsComponent {
       this.router.navigate(['']);
     } else {
       this.loadPilots();
+      this.loadFilms();
     }
   }
 
@@ -40,6 +44,20 @@ export class StarshipDetailsComponent {
       },
       complete: () => {
         console.log('Pilots loaded');
+      }
+    });
+  }
+
+  loadFilms(): void {
+    this.StarshipService.getFilms().subscribe({
+      next: (films) => {
+        this.films = films;
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+      complete: () => {
+        console.log('Films loaded');
       }
     });
   }

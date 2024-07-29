@@ -61,4 +61,16 @@ export class StarshipService {
     return forkJoin(pilotRequests);
   }
 
+  getFilms(): Observable<any[]> {
+    if (!this.selectedStarship || !this.selectedStarship.films.length) {
+      return new Observable<any[]>(observer => {
+        observer.next([]);
+        observer.complete();
+      });
+    }
+
+    const filmsRequests = this.selectedStarship.films.map(url => this.http.get(url));
+    return forkJoin(filmsRequests);
+  }
+
 }

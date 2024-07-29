@@ -52,7 +52,7 @@
 
 .custom-hr {
   border: none;
-  border-top: 1px solid #ffffff; /* Cambia el grosor y el color aquí */
+  border-top: 1px solid #ffffff;
   margin: 0;
 }
 
@@ -62,4 +62,29 @@
 .logout-btn:hover {
   cursor: pointer;
   color: rgb(233, 58, 58);
+}
+
+.login-btn:hover {
+  cursor: pointer;
+  color: rgb(151, 156, 119) !important;
+}
+
+.register-btn:hover {
+  cursor: pointer;
+  color: rgb(151, 156, 119) !important;
+}
+
+:host {
+  display: block;
+  background-image: url('https://lumiere-a.akamaihd.net/v1/images/outlaws-payoff-key-art-hero-desktop_700d9f75.jpeg?region=0,0,1600,686');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+}
+
+.social-link img:hover {
+  transform: scale(1.2);
+  filter: brightness(0) saturate(100%) invert(78%) sepia(97%) saturate(344%) hue-rotate(345deg) brightness(99%) contrast(97%);
 }
