@@ -2,11 +2,11 @@
 
   <div>
     @for (pilot of pilots; track $index) {
-      <div class="card" style="width: 18rem;">
+      <div class="card">
         <div class="card-body">
           <img [src]="'https://starwars-visualguide.com/assets/img/characters/' + pilot.url.split('/')[5] + '.jpg'"
           (error)="handleImageError($event)">
-          <p class="text-light">{{pilot.name}}</p>
+          <p>{{pilot.name}}</p>
 
         </div>
       </div>
