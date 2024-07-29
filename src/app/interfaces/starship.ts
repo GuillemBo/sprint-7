@@ -18,6 +18,7 @@ export interface Starship {
   edited: string;
   url: string;
   image?: string;
+  next: string
 }
 
 export interface StarshipList {

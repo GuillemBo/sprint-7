@@ -30,6 +30,10 @@ export class StarshipListComponent {
   }
 
   loadStarships(): void {
+    if (this.loading) return;
+    if (this.currentPage >= 5) {
+      return;
+    }
     this.loading = true;
     this.StarshipService.getStarShips(this.currentPage).subscribe({
       next: (data) => {
