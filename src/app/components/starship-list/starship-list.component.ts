@@ -13,10 +13,12 @@ import { Component, HostListener,} from '@angular/core';
 export class StarshipListComponent {
 
   starships: any[] = [];
-  currentPage: number = 1;
+  nextPageUrl: string | null;
   loading: boolean = false;
 
-  constructor(private StarshipService: StarshipService) {}
+  constructor(private StarshipService: StarshipService) {
+    this.nextPageUrl = `${this.StarshipService.getApiUrl()}/?page=1`;
+  }
 
   ngOnInit(): void {
     this.loadStarships();
@@ -30,15 +32,12 @@ export class StarshipListComponent {
   }
 
   loadStarships(): void {
-    if (this.loading) return;
-    if (this.currentPage >= 5) {
-      return;
-    }
+    if (this.loading || !this.nextPageUrl) return;
     this.loading = true;
-    this.StarshipService.getStarShips(this.currentPage).subscribe({
+    this.StarshipService.getStarShips(this.nextPageUrl).subscribe({
       next: (data) => {
-        this.starships = [...this.starships, ...data];
-        this.currentPage++;
+        this.starships = [...this.starships, ...data.results];
+        this.nextPageUrl = data.next;
         this.loading = false;
       },
       error: (error) => {

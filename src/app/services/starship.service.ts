@@ -15,13 +15,17 @@ export class StarshipService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getStarShips(page: number = 1): Observable<Starship[]> {
-    return this.http.get<{ results: Starship[] }>(`${this.apiUrl}/?page=${page}`).pipe(
+  getApiUrl(): string {
+    return this.apiUrl;
+  }
+
+  getStarShips(url: string = `${this.apiUrl}/?page=1`): Observable<{ results: Starship[], next: string | null }> {
+    return this.http.get<{ results: Starship[], next: string | null }>(url).pipe(
       map(data => {
         data.results.forEach(starship => {
           starship.image = this.getStarshipImageUrl(starship);
         });
-        return data.results;
+        return data;
       })
     );
   }
