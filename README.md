@@ -42,6 +42,6 @@ Este proyecto frontend se integra con la API https://swapi.dev/api para gestiona
 - 
 ## 🛠️ Instalación
 
-npm install
-npx json-server-auth db.json (Para iniciar el fake backend)
+- npm install
+- npx json-server-auth db.json (Para iniciar el fake backend)
 
