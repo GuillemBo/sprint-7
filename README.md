@@ -45,9 +45,3 @@ Este proyecto frontend se integra con la API https://swapi.dev/api para gestiona
 npm install
 npx json-server-auth db.json (Para iniciar el fake backend)
 
-**✔️ Paso 3:** Clona el repositorio:
-
-```bash
-git clone https://github.com/Yul1b3th/ezhub-frontend.git
-```
-
