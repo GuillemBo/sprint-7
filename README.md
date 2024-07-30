@@ -6,22 +6,48 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 📄 Descripción
 
-## Further help
+Este repositorio contiene los recursos del frontend de la aplicación sprint7 (una web de star wars), diseñada para facilitar la búsqueda y gestión de informacion sobre las peliculas, naves, personajes, etc.
+## ✨ Características
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Interfaz de Usuario Intuitiva** Diseño intuitivo y fácil de usar para una experiencia de usuario agradable.
+
+- **Integración con Backend:** Conexión directa con el backend para gestionar datos de usuarios (login, registro)
+
+- **Personalización con Angular Material y Bootstrap
+
+## ☁️ Interacción con API
+
+Este proyecto frontend se integra con la API https://swapi.dev/api para gestionar la información.
+
+## 💻 Tecnologías Utilizadas
+
+- HTML5
+- SCSS
+- TypeScript
+- Bootstrap
+- [Angular CLI](https://angular.dev/) version 17.1.2.
+- [Angular Material](https://material.angular.io/) version 17.1.2.
+
+## 📋 Requisitos
+
+- Node.js y npm instalados en tu sistema. Puedes descargarlos desde [nodejs.org](https://nodejs.org/).
+- Angular CLI instalado globalmente.
+- 
+## 🛠️ Instalación
+
+npm install
+npx json-server-auth db.json (Para iniciar el fake backend)
+
+**✔️ Paso 3:** Clona el repositorio:
+
+```bash
+git clone https://github.com/Yul1b3th/ezhub-frontend.git
+```
+
